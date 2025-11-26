@@ -14,15 +14,18 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import HostessSchedule from './pages/HostessSchedule';
 
+import Landing from './pages/Landing'; // Added import
+
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<><Navbar /><Home /></>} />
+            <Route path="/home" element={<><Navbar /><Home /></>} />
             <Route path="/jobs" element={<><Navbar /><Dashboard /></>} />
             <Route path="/profile" element={<><Navbar /><Profile /></>} />
             <Route path="/users" element={<><Navbar /><UserManagement /></>} />
